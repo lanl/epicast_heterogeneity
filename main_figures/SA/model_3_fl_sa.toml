@@ -1,0 +1,138 @@
+
+# ============================================================================ #
+# basic simulation related parameters
+
+# SPaSM run number, set to -1 to automatically increment from the last run
+# set to >= 0 to force the system to use that run number (it will overwrite if
+# you ask it too)
+run_number = -1
+
+# simulation duration in days
+duration = 120
+
+# random seed to use
+rng_seed = 112233
+
+# ============================================================================ #
+# core input data related parameters (geography, agents info / demographics etc)
+
+# hhs region 8: CO, MT, ND, SD, UT, WY
+#geography = [8, 30, 38, 46, 49, 56]
+geography = [12]
+#geography = [1, 4, 5, 6, 8, 9, 10, 11, 12, 13, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 44, 45, 46, 47, 48, 49, 50, 51, 53, 54, 55, 56]
+
+# simulation start date
+start_date = "Mar25"
+
+# dates on which to resume various activities
+school_start_date = "Mar25"
+resume_travel_date = "Mar25"
+resume_work_date = "Mar25"
+resume_school_date = "Mar25"
+resume_social_date = "Mar25"
+
+# ============================================================================ #
+
+# directory in which agent and tract data are located
+agent_data_dir = "/vast/projects/epicast_shared/input_data/urbanpop"
+
+# *OR* if you compiled epicast to use the random-constrained synthesis system
+# agent_data_dir = "/vast/projects/epicast_shared/input_data/urbanpop_marginals"
+
+# tract to tract worker flow data
+worker_flow_file = "/vast/projects/epicast_shared/input_data/workerflow/2019-lodes7-thr0_us.workerflow.bin"
+
+# file containing county-wise index cases and cumulative case counts for this run
+index_case_file = "/vast/projects/epicast_shared/input_data/case_data/March25.cases"
+
+# whether or not to confer immunity based on county-wise cumulative case counts
+confer_immunity = 1
+
+# file containing per-state variant prevalence
+variant_prevalence_file = "/vast/projects/epicast_shared/input_data/case_data/AltStrain.csv"
+
+# state-to-state connectivity matrix from flight data
+flight_data_file = "/vast/projects/epicast_shared/input_data/flights.csv"
+
+# % vaccine coverage by age for each US county
+vaccine_coverage_file = "/vast/projects/epicast_shared/input_data/vaccine_data/VaccinesByAge_080521"
+
+# % unsure and strongly hesitant for each US county
+vaccine_hesitancy_file = "/vast/projects/epicast_shared/input_data/vaccine_data/ASPE-hesitancy-v2.csv"
+
+workgroup_data_file = "/vast/projects/epicast_shared/input_data/workgroups.bin"
+
+schoolgroup_data_file = "/vast/projects/epicast_shared/input_data/full_us-countywise.schoolgroups.bin"
+
+worker_contact_file = "/vast/projects/epicast_shared/input_data/work_contact.bin"
+
+# directory in which to store results (can be relative to executable)
+# TODO FIXME: replace this path with where you want results to be written to
+output_dir = "."
+
+# best practice is to set this from the command line
+output_prefix = ""
+
+# results output granularity level [DEFAULT = 1]: (all are per-tract, per-day)
+#   0: save an "event" every time an agent transitions into the exposed / infected state
+#   1: only total infections
+#   2: total infections + infections by age, household size, race, and ethnicity
+#   3: 1 & 2 + hospitalizations, ICU admissions, ventilations, and deaths by age
+#   4: 1 - 3 + source of infection (i.e. # of transmission events that occurred in each context)
+#   5: 1 - 4 + # of agents in each state [symptomatic, incubation, prodromal (latent), infectious]
+output_level = 0
+
+# checkpoint interval in days (*NOT* time steps):
+#   0 -> no checkpointing
+#   -1 -> checkpoint immediatly after initialization and exit
+#   e.g. checkpoint_interval = 5 -> checkpint at the end of day 4, 9, 14, etc.
+#   where the first day is of course day 0....
+checkpoint_interval = 0
+
+# set to 1 to overwrite existing checkpoint file (for *this* run) each time
+# one is saved
+checkpoint_overwrite = 0
+
+# file name prefix for output files
+checkpoint_prefix = "example"
+
+# ============================================================================ #
+# contact matrix scaling factors
+# [contact]
+
+
+# contact matrix scaling factors
+# [contact]
+pFA  = 0.9  # families
+pWO  = 1.4# 0.65  # workplaces
+pSC  = 7.9  # schools
+pHC  = 1.25 # neighborhood-clusters
+pNH  = 1.25 # neighborhoods
+pCO  = 1.25 # communities
+pBAR = -1.0 # bars / large social gatherings (<0 = no transmission of this type)
+
+
+#pFA  = 1.5  # families
+#pWO  = 1.1  # workplaces
+#pSC  = 0.8  # schools
+#pHC = 0.2   # neighborhood clusters
+#pNH  = 0.001 # neighborhoods
+#pCO  = 0.2 # communities
+#pBAR = -1.0 # bars / large social gatherings (<0 = no transmission of this type)
+
+pSCC2A = 1.0
+pSCA2C = 1.0
+# ============================================================================ #
+# [disease] Model 1 (0.13, 1.2) Model 2 (0.1525,1.0) Model 3 (0.10,1.0)
+p_trans = 0.079                # transmission probability | contact
+p_reinfect = 0.0              # reinfection proabability
+p_asymptomatic = 0.40         # asymptomatic proportion
+
+rel_trans_asymptomatic = 0.75 # relative infectiousness of asymptomatic individuals
+
+# vaccine supply in millions of doses per week, set to <= 0.0 to omit
+# vaccination
+vac_supply = 0.0
+vac_efficacy = 0.4           # vaccine efficacy
+
+# ============================================================================ #

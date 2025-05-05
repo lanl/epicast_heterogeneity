@@ -1,0 +1,12 @@
+name = "EHHelpers"
+uuid = "5b21881b-f3ea-401c-8d04-0ed6485cb0fc"
+authors = ["Scottie Alexander <palexander@lanl.gov>"]
+version = "0.1.0"
+
+[deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+
+[compat]
+CSV = "0.10.15"
+Statistics = "1.11.1"

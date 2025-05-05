@@ -1,0 +1,19 @@
+name = "EpicastHeterogeneity"
+uuid = "99eb9ae6-9516-4402-8bfd-47e5fa8a5375"
+authors = ["Scottie Alexander <palexander@lanl.gov>"]
+version = "0.1.0"
+
+[deps]
+CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
+EHHelpers = "5b21881b-f3ea-401c-8d04-0ed6485cb0fc"
+EpicastGeoplot = "0e7bac85-0835-48b7-bb06-6a97cb5ddbcc"
+EpicastTables = "7f8b32be-ad0a-4d41-97a2-963287e4efb7"
+Printf = "de0858da-6303-5e67-8744-51eddeeeb8d7"
+PyPlot = "d330b81b-6aea-500a-939a-2ce795aea3ee"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+
+[compat]
+CSV = "0.10.15"
+Printf = "1.11.0"
+PyPlot = "2.11.5"
+Statistics = "1.11.1"
