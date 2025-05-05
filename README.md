@@ -12,6 +12,10 @@ The data for this paper can be accessed from its [Zenodo archive](https://zenodo
 
 Coming soon...
 
+# Contributors
+
+This code was developed my Thomas Harris, Micaela Richter, and Scottie Alexander. The commit history for this repository does not reflect the degree of contributions from each author.
+
 # Release
 
 This software has been approved for open source release and has been assigned O4867.
